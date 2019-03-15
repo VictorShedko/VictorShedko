@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 public class View extends Application {
     private Controller myController;
+    private final static String RANDOM_REQUEST = "random";
+    private final static String ADDER_REQUEST = "add";
+    private final static String SUBTRACTOR_REQUEST = "sub";
     @Override
 public void start(Stage primaryStage) {
     try {
@@ -55,7 +58,7 @@ public void start(Stage primaryStage) {
         AnchorPane.setRightAnchor(txtSecondNumber, 10.0);
         AnchorPane.setLeftAnchor(txtSecondNumber, 240.0);
 
-///////////////////
+
 
 
 
@@ -95,47 +98,35 @@ public void start(Stage primaryStage) {
 
         randomButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                try {
 
-                   int result=myController.analyze("random", Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
+
+                   int result=myController.analyze(RANDOM_REQUEST, Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
                     lblResultOfRandom.setText("Result: "+result);
-                }
-                catch(Exception e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Wrong input !");
-                    alert.show();
-                }
+
             }
         });
 
 
         adderButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                try {
 
-                    int result=myController.analyze("add", Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
+
+                    int result=myController.analyze(ADDER_REQUEST, Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
                     lblResultOfRandom.setText("Result: "+result);
-                }
-                catch(Exception e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Wrong input !");
-                    alert.show();
-                }
+
+
             }
         });
 
         subtractorButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                try {
 
-                    int result=myController.analyze("sub", Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
+
+                    int result=myController.analyze(SUBTRACTOR_REQUEST, Integer.parseInt(txtFirstNumber.getText()), Integer.parseInt(txtSecondNumber.getText()));
                     lblResultOfRandom.setText("Result: "+result);
-                }
-                catch(Exception e){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Wrong input !");
-                    alert.show();
-                }
+
+
+
             }
         });
 
